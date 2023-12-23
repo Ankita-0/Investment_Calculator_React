@@ -1,17 +1,25 @@
-export default function UserInput({onChangeHandler }) {
+export default function UserInput({ dataEnteries, onChangeHandler }) {
     return (
         <div id='user-input'>
             <div className="input-group">
-                <label>Initial Investment</label>
-                <input id='initialInvestment' onChange={onChangeHandler}></input>
-                <label>Annual Investment</label>
-                <input id='annualInvestment' onChange={onChangeHandler}></input>
+                <p>
+                    <label>Initial Investment</label>
+                    <input type='number' value={dataEnteries.initialInvestment} id='initialInvestment' onChange={onChangeHandler} required></input>
+                </p>
+                <p>
+                    <label>Annual Investment</label>
+                    <input type='number' value={dataEnteries.annualInvestment} id='annualInvestment' onChange={onChangeHandler}></input>
+                </p>
             </div>
             <div className="input-group">
-                <label>Expexted Return</label>
-                <input id='expectedReturn' onChange={onChangeHandler}></input>
-                <label>Duration</label>
-                <input id='duration' onChange={onChangeHandler}></input>
+                <p>
+                    <label>Expexted Return</label>
+                    <input type='number' value={dataEnteries.expectedReturn} id='expectedReturn' onChange={onChangeHandler}></input>
+                </p>
+                <p>
+                    <label>Duration</label>
+                    <input type='number' value={dataEnteries.duration} id='duration' onChange={onChangeHandler}></input>
+                </p>
             </div>
         </div>
     )
