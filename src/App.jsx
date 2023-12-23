@@ -8,25 +8,27 @@ function App() {
   const [enteries, setEnteries] = useState({
     initialInvestment: 15000,
     annualInvestment: 1200,
-    expectedReturn:6,
+    expectedReturn: 6,
     duration: 2
   });
-  const ResultTabledata = calculateInvestmentResults({...enteries})
 
-  function handleEnteriesInput(e){
+  const inputIsValid = enteries.duration >= 1;
+  const ResultTabledata = calculateInvestmentResults({ ...enteries })
+
+  function handleEnteriesInput(e) {
     setEnteries((previousEnteries) => {
-        return {
-            ...previousEnteries,
-            [e.target.id] : +e.target.value
-        }
+      return {
+        ...previousEnteries,
+        [e.target.id]: +e.target.value
+      }
     })
-}
+  }
 
-return (
+  return (
     <>
-    <Header />
-    <UserInput dataEnteries={enteries} onChangeHandler={handleEnteriesInput}/>
-    <ResultsTable resultTabledata={ResultTabledata}/>
+      <Header />
+      <UserInput dataEnteries={enteries} onChangeHandler={handleEnteriesInput} />
+      {inputIsValid ? (<ResultsTable resultTabledata={ResultTabledata} />) : (<p className='center'>Please enter a duration greater that zero</p>)}
     </>
   )
 }
